@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Define template file
-template_file="mtemplate"
+# Define the template file
+template_file="mail_file"
 
-# looping through the first field of /etc/passwd
+# Loop through all users and send email
 for user in $(cut -d: -f1 /etc/passwd); do
-    
-     cat "$template_file" | mail -s "Your Subject Here" "$user@localhost"
+   
+        # Send email to each user
+        echo "Sending email to $user..."
+
+        cat "$template_file" | mail -s "Your Subject Here" $useremail
     
 done
+
